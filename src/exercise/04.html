@@ -8,17 +8,80 @@
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
+   // function Message(props) {
+    //  return <div {...props}/>
+    // }
+    //or we can implement like  this 
+    // function message(props) {
+     // return <div className='message'> {props.children}</div>
+    // }
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
-    const element = (
+    /*  const element = (
       <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
+        {message({children:'Helllo World1111234'
+        })}
+        {message({children:'Goodbye World'})}
       </div>
     )
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.createRoot(document.getElementById('root')).render(element)
+     */
+    // extra credit solution 1
+    // const uii = React.createElement(message,{children:"hiii"})
+     
+    // const ujj = React.createElement(message,{children:"World"})
+    //const element1 = (
+    //  <div className="message">
+     //   <Message>jiiiiiiii</Message> 
+     //   <!-- OR WE CAN USE {uii} to render instaed of above message  -->
+     //   {ujj}
+        
+       // </div>
+     //) 
+    
+    // const roootel = document.getElementById('root')
+     //const root2 =ReactDOM.createRoot(roootel)
+    // root2.render(element1)
+    
+  // soln for credit 3  
+  function Message({subject, greeting}) {
+   return (
+    <div className="message">
+      {greeting}, {subject}
+    </div>
+  )
+}
+const PropTypes ={
+    string(props,propName,componentName){
+    const type = typeof(props[propName])
+    if (type !== 'string'){
+      throw new Error (` Vishal you gave type is ${type} of ${componentName} required a string`  )
+    }
+  }
+   } 
+
+ Message.propTypes ={
+  subject :PropTypes.string,
+  greeting :PropTypes.string
+ }
+ 
+  
+ 
+ const elem3 = (
+    <div>
+    <Message greeting="Hello" subject= 'tyui' />
+    <Message greeting= 'null' subject="World" /> 
+    </div>
+
+  )
+  ReactDOM.createRoot(document.getElementById('root')).render(elem3)
+ 
+
+    
+
+    
   </script>
 </body>
